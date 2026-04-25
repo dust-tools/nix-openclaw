@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev a5f5608d060b23477b4522c1ba4effab2f7eb1c6. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev a8e25d9307b0ab8daeefbd94107ffb87108441ba. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -6972,6 +6972,10 @@ in
     };
     silenceTimeoutMs = lib.mkOption {
       type = t.nullOr (t.int);
+      default = null;
+    };
+    speechLocale = lib.mkOption {
+      type = t.nullOr (t.str);
       default = null;
     };
   }; });
