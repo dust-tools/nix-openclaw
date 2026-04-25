@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev a8e25d9307b0ab8daeefbd94107ffb87108441ba. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev f731e3754c6396919929758044b9a3a8e68d034c. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -3148,6 +3148,15 @@ in
         default = null;
       };
     }; };
+    };
+    session = lib.mkOption {
+      type = t.nullOr (t.submodule { options = {
+      dmScope = lib.mkOption {
+        type = t.nullOr (t.oneOf [ (t.enum [ "main" ]) (t.enum [ "per-peer" ]) (t.enum [ "per-channel-peer" ]) (t.enum [ "per-account-channel-peer" ]) ]);
+        default = null;
+      };
+    }; });
+      default = null;
     };
     type = lib.mkOption {
       type = t.nullOr (t.enum [ "route" ]);
