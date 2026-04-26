@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev 1a193b2d966657f225d70895d68bfdeefbc9b883. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev 1dc57d4c3157771260a6e64151dd827a31356709. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -99,6 +99,19 @@ in
     type = t.nullOr (t.submodule { options = {
     defaults = lib.mkOption {
       type = t.nullOr (t.submodule { options = {
+      agentRuntime = lib.mkOption {
+        type = t.nullOr (t.submodule { options = {
+        fallback = lib.mkOption {
+          type = t.nullOr (t.enum [ "pi" "none" ]);
+          default = null;
+        };
+        id = lib.mkOption {
+          type = t.nullOr (t.str);
+          default = null;
+        };
+      }; });
+        default = null;
+      };
       blockStreamingBreak = lib.mkOption {
         type = t.nullOr (t.oneOf [ (t.enum [ "text_end" ]) (t.enum [ "message_end" ]) ]);
         default = null;
@@ -1710,6 +1723,19 @@ in
         type = t.nullOr (t.str);
         default = null;
       };
+      agentRuntime = lib.mkOption {
+        type = t.nullOr (t.submodule { options = {
+        fallback = lib.mkOption {
+          type = t.nullOr (t.enum [ "pi" "none" ]);
+          default = null;
+        };
+        id = lib.mkOption {
+          type = t.nullOr (t.str);
+          default = null;
+        };
+      }; });
+        default = null;
+      };
       contextLimits = lib.mkOption {
         type = t.nullOr (t.submodule { options = {
         memoryGetDefaultLines = lib.mkOption {
@@ -2982,6 +3008,103 @@ in
             default = null;
           };
         }; });
+          default = null;
+        };
+        persona = lib.mkOption {
+          type = t.nullOr (t.str);
+          default = null;
+        };
+        personas = lib.mkOption {
+          type = t.nullOr (t.attrsOf (t.submodule { options = {
+          description = lib.mkOption {
+            type = t.nullOr (t.str);
+            default = null;
+          };
+          fallbackPolicy = lib.mkOption {
+            type = t.nullOr (t.oneOf [ (t.enum [ "preserve-persona" ]) (t.enum [ "provider-defaults" ]) (t.enum [ "fail" ]) ]);
+            default = null;
+          };
+          label = lib.mkOption {
+            type = t.nullOr (t.str);
+            default = null;
+          };
+          prompt = lib.mkOption {
+            type = t.nullOr (t.submodule { options = {
+            accent = lib.mkOption {
+              type = t.nullOr (t.str);
+              default = null;
+            };
+            constraints = lib.mkOption {
+              type = t.nullOr (t.listOf (t.str));
+              default = null;
+            };
+            pacing = lib.mkOption {
+              type = t.nullOr (t.str);
+              default = null;
+            };
+            profile = lib.mkOption {
+              type = t.nullOr (t.str);
+              default = null;
+            };
+            sampleContext = lib.mkOption {
+              type = t.nullOr (t.str);
+              default = null;
+            };
+            scene = lib.mkOption {
+              type = t.nullOr (t.str);
+              default = null;
+            };
+            style = lib.mkOption {
+              type = t.nullOr (t.str);
+              default = null;
+            };
+          }; });
+            default = null;
+          };
+          provider = lib.mkOption {
+            type = t.nullOr (t.str);
+            default = null;
+          };
+          providers = lib.mkOption {
+            type = t.nullOr (t.attrsOf (t.submodule { options = {
+            apiKey = lib.mkOption {
+              type = t.nullOr (t.oneOf [ (t.str) (t.oneOf [ (t.submodule { options = {
+              id = lib.mkOption {
+                type = t.str;
+              };
+              provider = lib.mkOption {
+                type = t.str;
+              };
+              source = lib.mkOption {
+                type = t.enum [ "env" ];
+              };
+            }; }) (t.submodule { options = {
+              id = lib.mkOption {
+                type = t.str;
+              };
+              provider = lib.mkOption {
+                type = t.str;
+              };
+              source = lib.mkOption {
+                type = t.enum [ "file" ];
+              };
+            }; }) (t.submodule { options = {
+              id = lib.mkOption {
+                type = t.str;
+              };
+              provider = lib.mkOption {
+                type = t.str;
+              };
+              source = lib.mkOption {
+                type = t.enum [ "exec" ];
+              };
+            }; }) ]) ]);
+              default = null;
+            };
+          }; }));
+            default = null;
+          };
+        }; }));
           default = null;
         };
         prefsPath = lib.mkOption {
@@ -5409,6 +5532,103 @@ in
       }; });
         default = null;
       };
+      persona = lib.mkOption {
+        type = t.nullOr (t.str);
+        default = null;
+      };
+      personas = lib.mkOption {
+        type = t.nullOr (t.attrsOf (t.submodule { options = {
+        description = lib.mkOption {
+          type = t.nullOr (t.str);
+          default = null;
+        };
+        fallbackPolicy = lib.mkOption {
+          type = t.nullOr (t.oneOf [ (t.enum [ "preserve-persona" ]) (t.enum [ "provider-defaults" ]) (t.enum [ "fail" ]) ]);
+          default = null;
+        };
+        label = lib.mkOption {
+          type = t.nullOr (t.str);
+          default = null;
+        };
+        prompt = lib.mkOption {
+          type = t.nullOr (t.submodule { options = {
+          accent = lib.mkOption {
+            type = t.nullOr (t.str);
+            default = null;
+          };
+          constraints = lib.mkOption {
+            type = t.nullOr (t.listOf (t.str));
+            default = null;
+          };
+          pacing = lib.mkOption {
+            type = t.nullOr (t.str);
+            default = null;
+          };
+          profile = lib.mkOption {
+            type = t.nullOr (t.str);
+            default = null;
+          };
+          sampleContext = lib.mkOption {
+            type = t.nullOr (t.str);
+            default = null;
+          };
+          scene = lib.mkOption {
+            type = t.nullOr (t.str);
+            default = null;
+          };
+          style = lib.mkOption {
+            type = t.nullOr (t.str);
+            default = null;
+          };
+        }; });
+          default = null;
+        };
+        provider = lib.mkOption {
+          type = t.nullOr (t.str);
+          default = null;
+        };
+        providers = lib.mkOption {
+          type = t.nullOr (t.attrsOf (t.submodule { options = {
+          apiKey = lib.mkOption {
+            type = t.nullOr (t.oneOf [ (t.str) (t.oneOf [ (t.submodule { options = {
+            id = lib.mkOption {
+              type = t.str;
+            };
+            provider = lib.mkOption {
+              type = t.str;
+            };
+            source = lib.mkOption {
+              type = t.enum [ "env" ];
+            };
+          }; }) (t.submodule { options = {
+            id = lib.mkOption {
+              type = t.str;
+            };
+            provider = lib.mkOption {
+              type = t.str;
+            };
+            source = lib.mkOption {
+              type = t.enum [ "file" ];
+            };
+          }; }) (t.submodule { options = {
+            id = lib.mkOption {
+              type = t.str;
+            };
+            provider = lib.mkOption {
+              type = t.str;
+            };
+            source = lib.mkOption {
+              type = t.enum [ "exec" ];
+            };
+          }; }) ]) ]);
+            default = null;
+          };
+        }; }));
+          default = null;
+        };
+      }; }));
+        default = null;
+      };
       prefsPath = lib.mkOption {
         type = t.nullOr (t.str);
         default = null;
@@ -5732,7 +5952,7 @@ in
           type = t.str;
         };
         input = lib.mkOption {
-          type = t.nullOr (t.listOf (t.oneOf [ (t.enum [ "text" ]) (t.enum [ "image" ]) ]));
+          type = t.nullOr (t.listOf (t.oneOf [ (t.enum [ "text" ]) (t.enum [ "image" ]) (t.enum [ "video" ]) (t.enum [ "audio" ]) ]));
           default = null;
         };
         maxTokens = lib.mkOption {
