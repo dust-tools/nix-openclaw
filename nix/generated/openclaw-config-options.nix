@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev 29af4add2a8e612921e87aeb6426373e162c9d4a. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev 8de02c318ba5cf1cc195e7c819266e37a96cf88b. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -5766,6 +5766,14 @@ in
       baseUrl = lib.mkOption {
         type = t.str;
       };
+      contextTokens = lib.mkOption {
+        type = t.nullOr (t.int);
+        default = null;
+      };
+      contextWindow = lib.mkOption {
+        type = t.nullOr (t.number);
+        default = null;
+      };
       headers = lib.mkOption {
         type = t.nullOr (t.attrsOf (t.oneOf [ (t.str) (t.oneOf [ (t.submodule { options = {
         id = lib.mkOption {
@@ -5802,6 +5810,10 @@ in
       };
       injectNumCtxForOpenAICompat = lib.mkOption {
         type = t.nullOr (t.bool);
+        default = null;
+      };
+      maxTokens = lib.mkOption {
+        type = t.nullOr (t.number);
         default = null;
       };
       models = lib.mkOption {
@@ -6572,6 +6584,10 @@ in
           default = null;
         };
       }; });
+        default = null;
+      };
+      timeoutSeconds = lib.mkOption {
+        type = t.nullOr (t.int);
         default = null;
       };
     }; }));
