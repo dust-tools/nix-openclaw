@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev 7b3d3ce3615abe42acc05f6fcc4eda0a7f383646. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev c478aeca5a7fcfc9bfbeb088a59e3605d4dae5e1. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -1309,6 +1309,10 @@ in
             type = t.nullOr (t.listOf (t.str));
             default = null;
           };
+          gpus = lib.mkOption {
+            type = t.nullOr (t.str);
+            default = null;
+          };
           image = lib.mkOption {
             type = t.nullOr (t.str);
             default = null;
@@ -1813,6 +1817,10 @@ in
         };
         mentionPatterns = lib.mkOption {
           type = t.nullOr (t.listOf (t.str));
+          default = null;
+        };
+        visibleReplies = lib.mkOption {
+          type = t.nullOr (t.enum [ "automatic" "message_tool" ]);
           default = null;
         };
       }; });
@@ -2466,6 +2474,10 @@ in
           };
           extraHosts = lib.mkOption {
             type = t.nullOr (t.listOf (t.str));
+            default = null;
+          };
+          gpus = lib.mkOption {
+            type = t.nullOr (t.str);
             default = null;
           };
           image = lib.mkOption {
@@ -5342,6 +5354,10 @@ in
         type = t.nullOr (t.listOf (t.str));
         default = null;
       };
+      visibleReplies = lib.mkOption {
+        type = t.nullOr (t.enum [ "automatic" "message_tool" ]);
+        default = null;
+      };
     }; });
       default = null;
     };
@@ -5751,6 +5767,15 @@ in
     type = t.nullOr (t.submodule { options = {
     mode = lib.mkOption {
       type = t.nullOr (t.oneOf [ (t.enum [ "merge" ]) (t.enum [ "replace" ]) ]);
+      default = null;
+    };
+    pricing = lib.mkOption {
+      type = t.nullOr (t.submodule { options = {
+      enabled = lib.mkOption {
+        type = t.nullOr (t.bool);
+        default = null;
+      };
+    }; });
       default = null;
     };
     providers = lib.mkOption {
