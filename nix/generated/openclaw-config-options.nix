@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev 5de91455628188e33334528190bef9384afb6172. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev df51878b0b4710a2c20b52f0d4890c2da97e059f. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -12783,6 +12783,10 @@ in
         };
         ssrfPolicy = lib.mkOption {
           type = t.nullOr (t.submodule { options = {
+          allowIpv6UniqueLocalRange = lib.mkOption {
+            type = t.nullOr (t.bool);
+            default = null;
+          };
           allowRfc2544BenchmarkRange = lib.mkOption {
             type = t.nullOr (t.bool);
             default = null;
