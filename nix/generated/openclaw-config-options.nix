@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev 115e7638049bece3ad9ffc16d893e0ccc474dd01. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev 991da294814a3837d52f15b30533eb9ac34a27ea. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -660,6 +660,10 @@ in
           type = t.nullOr (t.str);
           default = null;
         };
+        skipWhenBusy = lib.mkOption {
+          type = t.nullOr (t.bool);
+          default = null;
+        };
         suppressToolErrorWarnings = lib.mkOption {
           type = t.nullOr (t.bool);
           default = null;
@@ -1190,6 +1194,10 @@ in
           default = null;
         };
       }; });
+        default = null;
+      };
+      reasoningDefault = lib.mkOption {
+        type = t.nullOr (t.oneOf [ (t.enum [ "off" ]) (t.enum [ "on" ]) (t.enum [ "stream" ]) ]);
         default = null;
       };
       repoRoot = lib.mkOption {
@@ -1887,6 +1895,10 @@ in
         };
         session = lib.mkOption {
           type = t.nullOr (t.str);
+          default = null;
+        };
+        skipWhenBusy = lib.mkOption {
+          type = t.nullOr (t.bool);
           default = null;
         };
         suppressToolErrorWarnings = lib.mkOption {
@@ -5755,6 +5767,10 @@ in
         default = null;
       };
     }; });
+      default = null;
+    };
+    visibleReplies = lib.mkOption {
+      type = t.nullOr (t.enum [ "automatic" "message_tool" ]);
       default = null;
     };
   }; });
