@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev cfcb8f4edac0c570696f4ff01d1c632f52ae3c43. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev 115e7638049bece3ad9ffc16d893e0ccc474dd01. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -5318,6 +5318,14 @@ in
         };
         onBoot = lib.mkOption {
           type = t.nullOr (t.bool);
+          default = null;
+        };
+        startup = lib.mkOption {
+          type = t.nullOr (t.enum [ "off" "idle" "immediate" ]);
+          default = null;
+        };
+        startupDelayMs = lib.mkOption {
+          type = t.nullOr (t.int);
           default = null;
         };
         updateTimeoutMs = lib.mkOption {
