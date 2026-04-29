@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev 69fb7455c6223682a45dd8b8fb720bc3231bfa43. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev e4cb0f668382fbbcbcf55ee287891582b49dacb3. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -4306,6 +4306,10 @@ in
     };
     customBindHost = lib.mkOption {
       type = t.nullOr (t.str);
+      default = null;
+    };
+    handshakeTimeoutMs = lib.mkOption {
+      type = t.nullOr (t.int);
       default = null;
     };
     http = lib.mkOption {
