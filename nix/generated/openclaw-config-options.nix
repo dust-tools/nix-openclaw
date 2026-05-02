@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev 60d0516a4e8618e6f2e7c2be06160c0f87c980fc. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev 2f44ffc8a75f78da3f593da831152209b40c4b72. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -7,6 +7,32 @@ in
 {
   "$schema" = lib.mkOption {
     type = t.nullOr (t.str);
+    default = null;
+  };
+
+  accessGroups = lib.mkOption {
+    type = t.nullOr (t.attrsOf (t.oneOf [ (t.submodule { options = {
+    channelId = lib.mkOption {
+      type = t.str;
+    };
+    guildId = lib.mkOption {
+      type = t.str;
+    };
+    membership = lib.mkOption {
+      type = t.nullOr (t.enum [ "canViewChannel" ]);
+      default = null;
+    };
+    type = lib.mkOption {
+      type = t.enum [ "discord.channelAudience" ];
+    };
+  }; }) (t.submodule { options = {
+    members = lib.mkOption {
+      type = t.attrsOf (t.listOf (t.str));
+    };
+    type = lib.mkOption {
+      type = t.enum [ "message.senders" ];
+    };
+  }; }) ]));
     default = null;
   };
 
@@ -4942,6 +4968,22 @@ in
           type = t.nullOr (t.str);
           default = null;
         };
+        clawpackManifestSha256 = lib.mkOption {
+          type = t.nullOr (t.str);
+          default = null;
+        };
+        clawpackSha256 = lib.mkOption {
+          type = t.nullOr (t.str);
+          default = null;
+        };
+        clawpackSize = lib.mkOption {
+          type = t.nullOr (t.int);
+          default = null;
+        };
+        clawpackSpecVersion = lib.mkOption {
+          type = t.nullOr (t.int);
+          default = null;
+        };
         gitCommit = lib.mkOption {
           type = t.nullOr (t.str);
           default = null;
@@ -6151,6 +6193,10 @@ in
         };
       }; });
       };
+      params = lib.mkOption {
+        type = t.nullOr (t.attrsOf (t.anything));
+        default = null;
+      };
       request = lib.mkOption {
         type = t.nullOr (t.submodule { options = {
         allowPrivateNetwork = lib.mkOption {
@@ -7054,10 +7100,6 @@ in
     }; });
       default = null;
     };
-    parentForkMaxTokens = lib.mkOption {
-      type = t.nullOr (t.int);
-      default = null;
-    };
     reset = lib.mkOption {
       type = t.nullOr (t.submodule { options = {
       atHour = lib.mkOption {
@@ -7217,6 +7259,10 @@ in
     };
     threadBindings = lib.mkOption {
       type = t.nullOr (t.submodule { options = {
+      defaultSpawnContext = lib.mkOption {
+        type = t.nullOr (t.enum [ "isolated" "fork" ]);
+        default = null;
+      };
       enabled = lib.mkOption {
         type = t.nullOr (t.bool);
         default = null;
@@ -7227,6 +7273,10 @@ in
       };
       maxAgeHours = lib.mkOption {
         type = t.nullOr (t.number);
+        default = null;
+      };
+      spawnSessions = lib.mkOption {
+        type = t.nullOr (t.bool);
         default = null;
       };
     }; });
