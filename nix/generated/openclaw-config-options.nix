@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev d919281fa86469c321fdecb54dc401e9024b4156. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev 8d67ee112fb0ccebf8f559be0df08b3b5938b708. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -4380,6 +4380,10 @@ in
         type = t.nullOr (t.str);
         default = null;
       };
+      chatMessageMaxWidth = lib.mkOption {
+        type = t.nullOr (t.anything);
+        default = null;
+      };
       dangerouslyAllowHostHeaderOriginFallback = lib.mkOption {
         type = t.nullOr (t.bool);
         default = null;
@@ -7301,6 +7305,15 @@ in
     };
     typingMode = lib.mkOption {
       type = t.nullOr (t.oneOf [ (t.enum [ "never" ]) (t.enum [ "instant" ]) (t.enum [ "thinking" ]) (t.enum [ "message" ]) ]);
+      default = null;
+    };
+    writeLock = lib.mkOption {
+      type = t.nullOr (t.submodule { options = {
+      acquireTimeoutMs = lib.mkOption {
+        type = t.nullOr (t.int);
+        default = null;
+      };
+    }; });
       default = null;
     };
   }; });
